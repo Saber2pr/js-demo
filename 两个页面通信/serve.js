@@ -1,0 +1,1 @@
+require('saber-httpserver').HttpServer()
