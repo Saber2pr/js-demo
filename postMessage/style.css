@@ -2,7 +2,7 @@
  * @Author: saber2pr 
  * @Date: 2019-04-13 23:18:14 
  * @Last Modified by: saber2pr
- * @Last Modified time: 2019-04-13 23:19:39
+ * @Last Modified time: 2019-04-13 23:50:43
  */
 * {
   margin: 0;
@@ -11,4 +11,9 @@
 
 html {
   background-color: rgb(108, 136, 136);
+}
+
+#child {
+  width: 100%;
+  height: 20vh;
 }
