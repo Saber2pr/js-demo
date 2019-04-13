@@ -5,21 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>事件捕获处理冒泡</title>
+  <title>双向绑定(defineProperty)</title>
 </head>
 
 <body>
-  <nav id="root_b">
-    <ul id="first_b">
-      <li id="second_b"><a id="target_b" href="#">冒泡</a></li>
-    </ul>
-  </nav>
-  <nav id="root_c">
-    <ul id="first_c">
-      <li id="second_c"><a id="target_c" href="#">捕获</a></li>
-    </ul>
-  </nav>
+  <h1>双向绑定(defineProperty)</h1>
+  <div><input type="text" id="input" oninput="__alternate['value'] = event.target.value">
+  </div>
+  <p id="p"></p>
   <pre id="code"></pre>
+  <div><a href="./proxy/index.html">双向绑定(Proxy)</a></div>
 </body>
 <script src="./index.js"></script>
 <script src="../common/precode.js"></script>
