@@ -1,1 +1,1 @@
-require('saber-httpserver').HttpServer()
+require('@saber2pr/nana').Nana.fileServer().listen(3005, () => console.log('http://localhost:3005/'))
