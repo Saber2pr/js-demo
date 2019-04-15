@@ -1,0 +1,15 @@
+/*
+ * @Author: saber2pr 
+ * @Date: 2019-04-15 16:01:48 
+ * @Last Modified by: saber2pr
+ * @Last Modified time: 2019-04-15 16:04:41
+ */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  height: 40vh;
+  background-color: aquamarine;
+}
