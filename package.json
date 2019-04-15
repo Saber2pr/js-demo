@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/Saber2pr/js-demo#readme",
   "devDependencies": {
-    "@saber2pr/nana": "0.0.7"
+    "@saber2pr/nana": "^0.1.0"
   }
 }
