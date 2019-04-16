@@ -2,7 +2,7 @@
  * @Author: saber2pr 
  * @Date: 2019-04-15 22:17:06 
  * @Last Modified by: saber2pr
- * @Last Modified time: 2019-04-16 11:41:03
+ * @Last Modified time: 2019-04-16 12:33:13
  */
 // 首先定义父类
 function Animal(name) {
@@ -103,7 +103,8 @@ const People = (function (_super) {
   // Object.create可以不依赖构造函数，直接使用原型生成一个实例
   // 等价于用一个空的构造函数替换原型的构造函数再new
   // 继承原型属性
-  People.prototype = Object.create(_super.prototype)
+  // People.prototype = Object.create(_super.prototype)
+  People.prototype = Object_create(_super.prototype)
   // 上面重写了原型，修复构造函数指向
   People.prototype.constructor = People
   // 静态属性
@@ -120,9 +121,45 @@ Base.prototype.getType = function () {
   return this.type
 }
 
-const p = new People(21)
+const p = New(People)(21)
 
 console.log(p)
 // instanceof判断右边构造函数的prototype原型是否在左边实例的__proto__原型链上
 console.log(p instanceof Base) // true
 console.log(p instanceof People) // true
+
+function Object_create(prototype) {
+  // 替换构造函数法
+  // const ctor = function () {}
+  // ctor.prototype = prototype
+  // return new ctor()
+  // 跳过构造函数法，直接绑定原型(原型链指向原型)
+  const obj = {
+    __proto__: prototype
+  }
+  return obj
+}
+/**
+ * new是用来执行函数的，只不过顺便绑定了原型。
+ * 所以手动实现：
+ * 1. 新对象绑定原型__proto__
+ * 2. 执行构造函数(注意上下文)
+ * 3. 返回新对象
+ * 就好了
+ * @param {Function} constructor
+ * @returns
+ */
+function New(constructor) {
+  // return function () {
+  //   const obj = Object.create(constructor.prototype)
+  //   constructor.apply(obj, arguments)
+  //   return obj
+  // }
+  return function () {
+    var obj = {
+      __proto__: constructor.prototype
+    }
+    constructor.apply(obj, arguments)
+    return obj
+  }
+}
