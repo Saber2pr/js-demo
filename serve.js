@@ -2,7 +2,7 @@
  * @Author: saber2pr
  * @Date: 2019-04-15 22:06:25
  * @Last Modified by: saber2pr
- * @Last Modified time: 2019-04-16 18:03:40
+ * @Last Modified time: 2019-04-16 18:11:02
  */
 const { Nana, Module, FsModule } = require('@saber2pr/nana')
 
@@ -47,11 +47,15 @@ const cors = Module({
   }
 })
 
-Nana.server([user, FsModule, jsonp, cors]).listen(3005, () =>
-  console.log('http://localhost:3005/')
-)
-
 Nana.watch({
   method: true,
   url: true
 })
+
+// 域为http://localhost:3005/
+Nana.server([user, FsModule, jsonp, cors]).listen(3005, () =>
+  console.log('http://localhost:3005/')
+)
+
+// 域为http://localhost:3006/
+Nana.fileServer().listen('3006', () => console.log('http://localhost:3006/'))
