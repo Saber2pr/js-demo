@@ -2,7 +2,7 @@
  * @Author: saber2pr 
  * @Date: 2019-04-15 22:17:06 
  * @Last Modified by: saber2pr
- * @Last Modified time: 2019-04-15 23:06:44
+ * @Last Modified time: 2019-04-16 11:41:03
  */
 // 首先定义父类
 function Animal(name) {
@@ -85,20 +85,44 @@ Horse.prototype.constructor = Horse;
 
 ////////////////////////扩展内容///////////////////////////////////
 // 实现私有、静态属性
-const People = (function () {
+const People = (function (_super) {
   // 但是，请注意，这个私有的变量会被所有实例共享！！
   // 所以typescript没有选择这种私有方式
   const _name = 'this is private'
 
   function People(age) {
+    // 继承构造函数
+    _super.call(this)
     this.age = age
+    this.getName = function () {
+      // 获取私有属性
+      return _name
+    }
   }
-  People.prototype.getName = function () {
-    // 获取私有属性
-    return _name
-  }
+
+  // Object.create可以不依赖构造函数，直接使用原型生成一个实例
+  // 等价于用一个空的构造函数替换原型的构造函数再new
+  // 继承原型属性
+  People.prototype = Object.create(_super.prototype)
+  // 上面重写了原型，修复构造函数指向
+  People.prototype.constructor = People
   // 静态属性
   People.id = '233'
 
   return People
-})()
+})(Base)
+
+function Base() {
+  this.type = 'base'
+}
+
+Base.prototype.getType = function () {
+  return this.type
+}
+
+const p = new People(21)
+
+console.log(p)
+// instanceof判断右边构造函数的prototype原型是否在左边实例的__proto__原型链上
+console.log(p instanceof Base) // true
+console.log(p instanceof People) // true

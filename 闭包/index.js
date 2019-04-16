@@ -2,7 +2,7 @@
  * @Author: saber2pr 
  * @Date: 2019-04-14 11:16:39 
  * @Last Modified by: saber2pr
- * @Last Modified time: 2019-04-14 17:31:09
+ * @Last Modified time: 2019-04-16 10:59:28
  */
 function main() {
   if (1) {
@@ -43,4 +43,34 @@ function main() {
   } catch (error) {
     console.error(error)
   }
+
+  const People = (function () {
+    // iife闭包环境
+
+    // 被闭包的变量，所有实例共享
+    var _age = 21
+
+    function People(name) {
+      this.name = name
+    }
+
+    People.prototype.getAge = function () {
+      return _age
+    }
+
+    People.prototype.addAge = function () {
+      _age++
+    }
+
+    return People
+  })()
+
+  const me = new People('saber2pr')
+  me.addAge()
+  console.log(me.getAge()) // 22
+
+  const saber = new People('saber')
+  saber.addAge()
+  console.log(saber.getAge()) // 23
+
 }
