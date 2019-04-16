@@ -6,4 +6,6 @@
 git clone https://github.com/Saber2pr/js-demo.git
 
 node serve
+
+node serve2
 ```
