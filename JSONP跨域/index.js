@@ -3,7 +3,7 @@ function main() {
    * @Author: saber2pr
    * @Date: 2019-04-16 16:42:18
    * @Last Modified by: saber2pr
-   * @Last Modified time: 2019-04-16 18:04:43
+   * @Last Modified time: 2019-04-16 23:01:37
    */
   /**
    * @param {string} url
@@ -14,12 +14,10 @@ function main() {
       const script = document.createElement('script')
       // 设置回调名
       const callbackId = `jsonp_${Date.now()}`
-      // 参数
-      const params = url.split('?')[1] || ''
-      // 拼接请求的url，异步请求在这里
+      // 拼接请求的url，异步请求在这里，判断是否已经有参数
       script.src = url.includes('?')
         ? `${url}&callback=${callbackId}`
-        : `${url}?callback=${callbackId}&${params}`
+        : `${url}?callback=${callbackId}`
       // 设置读取返回结果的回调函数, 必须设置在window上
       window[callbackId] = result => {
         // 释放内存
