@@ -3,7 +3,7 @@ function main() {
    * @Author: saber2pr
    * @Date: 2019-04-14 11:16:39
    * @Last Modified by: saber2pr
-   * @Last Modified time: 2019-04-16 23:03:00
+   * @Last Modified time: 2019-04-17 18:35:46
    */
   if (1) {
     // var变量声明预编译提升到上一层，或者说if没有块级
@@ -73,3 +73,12 @@ function main() {
   saber.addAge()
   console.log(saber.getAge()) // 23
 }
+
+// js里存在3种作用域
+/**
+ * 1. 全局作用域
+ * 2. 函数作用域
+ * 3. 对象作用域
+ * 每个作用域里的var声明都会提升到该作用域顶层
+ * 子作用域声明覆盖父作用域
+ */

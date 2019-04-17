@@ -3,7 +3,7 @@ function main() {
    * @Author: saber2pr
    * @Date: 2019-04-17 17:47:35
    * @Last Modified by: saber2pr
-   * @Last Modified time: 2019-04-17 18:02:06
+   * @Last Modified time: 2019-04-17 18:27:45
    */
   const clone = value => {
     // 如果是数组，（Array.isArray也可以）
