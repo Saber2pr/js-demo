@@ -1,9 +1,9 @@
 function main() {
   /*
-   * @Author: saber2pr 
-   * @Date: 2019-04-16 09:52:22 
+   * @Author: saber2pr
+   * @Date: 2019-04-16 09:52:22
    * @Last Modified by: saber2pr
-   * @Last Modified time: 2019-04-16 12:37:36
+   * @Last Modified time: 2019-04-17 17:34:36
    */
   // 实例的构造函数
   function Cat() {}
@@ -40,6 +40,14 @@ function main() {
   // __proto__链：cat实例 -> Cat原型 -> Object原型 -> null
   console.log(cat.__proto__.__proto__.__proto__ === null)
 
+  // Function和Object的关系
+  // 所有的函数对象的原型都是Function的prototype，Object也是个函数对象
+  console.log(Object.__proto__ === Function.prototype)
+  // 那Function的原型是? [native code]
+  console.log(Function.__proto__)
+  // 应该是Function.prototype
+  console.log(Function.__proto__ === Function.prototype)
+
   // __proto__ 的作用
   /**
    * 当读取实例属性时，先在实例身上找，找不到就去__proto__上找，__proto__就是一条连接实例和实例原型的链条，
@@ -55,5 +63,16 @@ function main() {
    * 在prototype上有一个constructor属性，指向构造函数。
    * 即 constructor.prototype.constructor === constructor
    * 如果prototype被改变，则constructor指向也改变
+   */
+
+  // 总结一下
+  /**
+   * 1. 构造函数和原型之间通过 constructor.prototype.constructor === constructor ，双向连接
+   * 2. 实例通过__proto__一直向原型方向找（constructor.prototype），向上找到Object.prototype，再上就是null
+   * 3. prototype就是原型，__proto__就是原型链，__proto__把实例和一系列的prototype连起来
+   * 4. 构造函数的prototype就是原型
+   * 5. 实例的__proto__指向自己构造函数的prototype，而自己构造函数的原型（包括所有函数的原型）都是Function.prototype
+   * (甚至Function自己的原型也指向Function.prototype)
+   * 6. 对象实例的原型最终指向Object.prototype(再向上为null)，函数的原型指向Function.prototype
    */
 }
