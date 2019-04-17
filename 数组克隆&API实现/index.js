@@ -3,7 +3,7 @@ function main() {
    * @Author: saber2pr
    * @Date: 2019-04-17 21:22:07
    * @Last Modified by: saber2pr
-   * @Last Modified time: 2019-04-17 22:32:39
+   * @Last Modified time: 2019-04-17 22:56:46
    */
   // 判断一个对象是不是数组
   const isArray0 = obj => Array.isArray(obj)
@@ -46,7 +46,7 @@ function main() {
 
   // concat也是纯函数
   const arr2 = [1, 2, 3]
-  const newArr2 = [].concat(arr2)
+  const newArr2 = Array.prototype.concat(arr2)
   arr2[2] = 233
   console.log(newArr2)
 
