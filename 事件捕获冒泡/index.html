@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>事件捕获&冒泡</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>事件捕获&冒泡</title>
-</head>
-
-<body>
-  <h1>事件捕获&冒泡</h1>
-  <nav id="root_b">
-    <ul id="first_b">
-      <li id="second_b"><a id="target_b" href="#">冒泡</a></li>
-    </ul>
-  </nav>
-  <nav id="root_c">
-    <ul id="first_c">
-      <li id="second_c"><a id="target_c" href="#">捕获</a></li>
-    </ul>
-  </nav>
-  <pre id="code"></pre>
-</body>
-<script src="./index.js"></script>
-<script src="../common/precode.js"></script>
-
+  <body>
+    <h1>事件捕获&冒泡</h1>
+    <nav id="root_b">
+      <ul id="first_b">
+        <li id="second_b"><a id="target_b" href="#">冒泡</a></li>
+      </ul>
+    </nav>
+    <nav id="root_c">
+      <ul id="first_c">
+        <li id="second_c"><a id="target_c" href="#">捕获</a></li>
+      </ul>
+    </nav>
+    <pre id="code"></pre>
+    <script src="./index.js"></script>
+    <script src="../common/precode.js"></script>
+  </body>
 </html>
