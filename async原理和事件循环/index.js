@@ -3,7 +3,7 @@ function main() {
    * @Author: saber2pr
    * @Date: 2019-04-18 09:10:39
    * @Last Modified by: saber2pr
-   * @Last Modified time: 2019-04-18 13:41:21
+   * @Last Modified time: 2019-04-18 14:15:12
    */
   // micro-task
   Promise.resolve('micro-task1!').then(console.log)
@@ -18,7 +18,8 @@ function main() {
   // main-process
   console.log('main process!')
   // promise微任务队列
-  // setTimeout宏任务队列
+  // setTimeout宏任务队列，会延迟推入主线程一个任务
+  // 全局范围调用也是宏任务（主线程）
   // 主线程执行完毕，先取一个微任务队列中的任务推入主线程执行，执行完后再取，如果微任务执行完，再取宏任务执行。
   // 优先级 主线程 > 微任务 >　宏任务
   // 优先级相同的任务按调用先后执行
