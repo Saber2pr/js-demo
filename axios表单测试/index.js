@@ -1,39 +1,41 @@
-/*
- * @Author: saber2pr
- * @Date: 2019-04-15 18:39:21
- * @Last Modified by: saber2pr
- * @Last Modified time: 2019-04-16 17:34:43
- */
-const request = axios.create({
-  baseURL: 'http://localhost:3005',
-  timeout: 1000
-})
+function main() {
+  /*
+   * @Author: saber2pr
+   * @Date: 2019-04-15 18:39:21
+   * @Last Modified by: saber2pr
+   * @Last Modified time: 2019-04-18 09:08:50
+   */
+  const request = axios.create({
+    baseURL: 'http://localhost:3005',
+    timeout: 1000
+  })
 
-const username = document.querySelector('input[name=username]')
-const password = document.querySelector('input[name=password]')
+  const username = document.querySelector('input[name=username]')
+  const password = document.querySelector('input[name=password]')
 
-document.getElementById('submit').addEventListener('submit', event => {
-  event.preventDefault()
+  document.getElementById('submit').addEventListener('submit', event => {
+    event.preventDefault()
 
-  request
-    .get('/user/', {
-      params: {
+    request
+      .get('/user/', {
+        params: {
+          username: username.value,
+          password: password.value
+        }
+      })
+      .then(res => {
+        console.log('GET:', res)
+      })
+
+    request
+      .post(`/user/`, {
         username: username.value,
         password: password.value
-      }
-    })
-    .then(res => {
-      console.log('GET:', res)
-    })
+      })
+      .then(res => {
+        console.log('POST:', res)
+      })
 
-  request
-    .post(`/user/`, {
-      username: username.value,
-      password: password.value
-    })
-    .then(res => {
-      console.log('POST:', res)
-    })
-
-  console.log('submit')
-})
+    console.log('submit')
+  })
+}
