@@ -3,7 +3,7 @@ function main() {
    * @Author: saber2pr
    * @Date: 2019-04-18 09:10:39
    * @Last Modified by: saber2pr
-   * @Last Modified time: 2019-04-18 14:15:12
+   * @Last Modified time: 2019-04-18 16:18:55
    */
   // micro-task
   Promise.resolve('micro-task1!').then(console.log)

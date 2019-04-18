@@ -1,9 +1,9 @@
-function main() {
+function main () {
   /*
    * @Author: saber2pr
    * @Date: 2019-04-17 21:22:07
-   * @Last Modified by: saber2pr
-   * @Last Modified time: 2019-04-17 22:56:46
+ * @Last Modified by: saber2pr
+ * @Last Modified time: 2019-04-18 17:37:20
    */
   // 判断一个对象是不是数组
   const isArray0 = obj => Array.isArray(obj)
@@ -84,7 +84,7 @@ function main() {
   /**
    * map
    */
-  Array.prototype.myMap = function(callbackfn, thisArg) {
+  Array.prototype.myMap = function (callbackfn, thisArg) {
     const newArr = []
     for (let i = 0; i < this.length; i++) {
       newArr.push(callbackfn.call(thisArg, this[i], i, this))
@@ -97,7 +97,7 @@ function main() {
    * reduce
    * 为什么原生的reduce没有thisArg??
    */
-  Array.prototype.myReduce = function(callbackfn, initialValue = null) {
+  Array.prototype.myReduce = function (callbackfn, initialValue = null) {
     for (let i = 0; i < this.length; i++) {
       initialValue = callbackfn(initialValue, this[i], i, this)
       // initialValue = callbackfn.call(thisArg, initialValue, this[i], i, this)
@@ -109,7 +109,7 @@ function main() {
   /**
    * filter
    */
-  Array.prototype.myFilter = function(callbackfn, thisArg) {
+  Array.prototype.myFilter = function (callbackfn, thisArg) {
     const newArr = []
     for (let i = 0; i < this.length; i++) {
       callbackfn.call(thisArg, this[i], i, this) && newArr.push(this[i])
@@ -121,16 +121,28 @@ function main() {
   // 对象作用域
   const obj = {
     value: 2,
-    testFilter() {
+    testFilter () {
       // function函数作用域，上下文随调用时的作用域决定
-      return [1, 2, 3].myFilter(function(i) {
+      return [1, 2, 3].myFilter(function (i) {
         return i >= this.value
       }, this)
     },
-    testReduce() {
+    testReduce () {
       return [1, 2, 3].myReduce((pre, cur) => pre + this.value + cur, 0)
     }
   }
   console.log(obj.testFilter())
   console.log(obj.testReduce())
+
+  // 补充
+  // 数组乱序
+  console.log([1, 2, 3, 4, 5, 6, 7, 8, 9].sort(() => Math.random() > 0.5 ? 1 : -1))
+  function shuffle (arr) {
+    for (let i = 0; i < arr.length; i++) {
+      const index = parseInt(Math.random() * (arr.length - 1));
+      [arr[i], arr[index]] = [arr[index], arr[i]]
+    }
+    return arr
+  }
+  console.log(shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9]))
 }
