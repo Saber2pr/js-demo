@@ -3,7 +3,7 @@ function main() {
    * @Author: saber2pr
    * @Date: 2019-04-18 14:17:43
    * @Last Modified by: saber2pr
-   * @Last Modified time: 2019-04-18 14:29:12
+   * @Last Modified time: 2019-04-18 14:37:42
    */
   /**
    * @param {string} url
@@ -37,4 +37,29 @@ function main() {
     name: 'saber',
     age: 233
   }).then(console.log)
+
+  request('http://localhost:30051/user/?name=saber&age=21').then(console.log)
+  request('http://localhost:30051/user/', 'POST', {
+    name: 'saber',
+    age: 233
+  }).then(console.log)
+  // 补充
+  /**
+   * onreadystatechange
+   * 每当 readyState 属性改变时，就会调用该函数
+   *
+   * readyState
+   * 0. 请求未初始化
+   * 1. 服务器连接已建立
+   * 2. 请求已接收
+   * 3. 请求处理中
+   * 4. 请求已完成，且响应已就绪
+   *
+   * status http状态码
+   * 1xx: 请求正在处理
+   * 2xx: 请求处理完毕
+   * 3xx: 重定向
+   * 4xx: 浏览器端（客户端）错误
+   * 5xx: 服务器内部错误
+   */
 }
