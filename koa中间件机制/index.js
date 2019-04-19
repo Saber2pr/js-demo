@@ -3,7 +3,7 @@ function main () {
    * @Author: saber2pr 
    * @Date: 2019-04-19 12:52:42 
  * @Last Modified by: saber2pr
- * @Last Modified time: 2019-04-19 13:19:05
+ * @Last Modified time: 2019-04-19 13:22:48
    */
 
   async function job1 (ctx, next) {
@@ -24,6 +24,9 @@ function main () {
 
   const ctx = { name: 'koa' }
 
+  /**
+   * 原理就是把上一个promise传给下一个
+   */
   const process = (...jobs) => jobs.reduceRight((next, job) => async () => await job(ctx, next), null)
 
   process(job1, job2, job3)() // koa 1, koa 2, koa 3, koa 4, koa 5
