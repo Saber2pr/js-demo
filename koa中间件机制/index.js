@@ -3,7 +3,7 @@ function main () {
    * @Author: saber2pr 
    * @Date: 2019-04-19 12:52:42 
  * @Last Modified by: saber2pr
- * @Last Modified time: 2019-04-19 13:22:48
+ * @Last Modified time: 2019-04-19 13:24:56
    */
 
   async function job1 (ctx, next) {
@@ -25,7 +25,7 @@ function main () {
   const ctx = { name: 'koa' }
 
   /**
-   * 原理就是把上一个promise传给下一个
+   * 原理就是把下一个promise传给上一个
    */
   const process = (...jobs) => jobs.reduceRight((next, job) => async () => await job(ctx, next), null)
 
