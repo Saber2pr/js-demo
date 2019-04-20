@@ -3,7 +3,7 @@ function main() {
    * @Author: saber2pr
    * @Date: 2019-04-18 09:10:39
    * @Last Modified by: saber2pr
-   * @Last Modified time: 2019-04-18 16:18:55
+   * @Last Modified time: 2019-04-20 16:40:25
    */
   // micro-task
   Promise.resolve('micro-task1!').then(console.log)
@@ -57,7 +57,7 @@ function main() {
      * 未做异常处理
      * @param {() => IterableIterator<Promise<any>>} generator
      */
-    function async(generator) {
+    function async (generator) {
       // 调用生成器生成迭代器
       const iterator = generator()
       function next(onfulfilled) {
@@ -67,9 +67,9 @@ function main() {
         if (result.done) return
         // 注册下一次迭代到promise回调中
         // 如果yield的值不是promise，则包装为Promise.resolve
-        result.value.then
-          ? result.value.then(onfulfilled => next(onfulfilled))
-          : Promise.resolve(result.value).then(onfulfilled => next(onfulfilled))
+        result.value.then ?
+          result.value.then(onfulfilled => next(onfulfilled)) :
+          Promise.resolve(result.value).then(onfulfilled => next(onfulfilled))
       }
       next()
     }
@@ -77,7 +77,7 @@ function main() {
     const delay = (time, value) =>
       new Promise(res => setTimeout(() => res(value), time))
 
-    async(function*() {
+    async (function* () {
       const first = yield 1
       console.log(first)
 
