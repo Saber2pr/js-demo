@@ -2,9 +2,13 @@
  * @Author: saber2pr
  * @Date: 2019-04-15 22:06:25
  * @Last Modified by: saber2pr
- * @Last Modified time: 2019-04-17 14:31:43
+ * @Last Modified time: 2019-04-20 15:33:26
  */
-const { Nana, Module, FsModule } = require('@saber2pr/nana')
+const {
+  Nana,
+  Module,
+  FsModule
+} = require('@saber2pr/nana')
 
 const user = Module({
   url: '/user/',
@@ -47,10 +51,10 @@ const cors = Module({
   }
 })
 
-Nana.watch({
-  method: true,
-  url: true
-})
+// Nana.watch({
+//   method: true,
+//   url: true
+// })
 
 // 域为http://localhost:3005/
 Nana.server([user, FsModule, jsonp, cors]).listen(3005, () =>
