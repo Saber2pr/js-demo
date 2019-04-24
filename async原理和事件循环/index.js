@@ -3,7 +3,7 @@ function main() {
    * @Author: saber2pr
    * @Date: 2019-04-18 09:10:39
    * @Last Modified by: saber2pr
-   * @Last Modified time: 2019-04-20 16:40:25
+   * @Last Modified time: 2019-04-23 23:14:03
    */
   // micro-task
   Promise.resolve('micro-task1!').then(console.log)
@@ -60,6 +60,7 @@ function main() {
     function async (generator) {
       // 调用生成器生成迭代器
       const iterator = generator()
+
       function next(onfulfilled) {
         // 迭代一次
         const result = iterator.next(onfulfilled)
