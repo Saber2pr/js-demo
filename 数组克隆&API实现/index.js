@@ -1,27 +1,42 @@
-function main () {
+function main() {
   /*
    * @Author: saber2pr
    * @Date: 2019-04-17 21:22:07
- * @Last Modified by: saber2pr
- * @Last Modified time: 2019-04-18 17:37:20
+   * @Last Modified by: saber2pr
+   * @Last Modified time: 2019-04-26 11:05:52
    */
   // 判断一个对象是不是数组
   const isArray0 = obj => Array.isArray(obj)
   const isArray1 = obj =>
     Object.prototype.toString.call(obj) === '[object Array]'
   console.log(isArray0([]))
-  console.log(isArray0({ 0: 'value', length: 1 }))
+  console.log(isArray0({
+    0: 'value',
+    length: 1
+  }))
   console.log(isArray1([]))
-  console.log(isArray1({ 0: 'value', length: 1 }))
+  console.log(isArray1({
+    0: 'value',
+    length: 1
+  }))
   console.log(isArray0(arguments))
   console.log(isArray1(arguments))
   console.log(isArray0(document.getElementsByClassName('')))
   console.log(isArray1(document.getElementsByClassName('')))
   console.log(isArray0(document.getElementsByTagName('div')))
   console.log(isArray1(document.getElementsByTagName('div')))
-  console.log(Array.from({ 0: 'value', length: 1 }))
-  console.log(isArray0(Array.from({ 0: 'value', length: 1 })))
-  console.log(isArray1(Array.from({ 0: 'value', length: 1 })))
+  console.log(Array.from({
+    0: 'value',
+    length: 1
+  }))
+  console.log(isArray0(Array.from({
+    0: 'value',
+    length: 1
+  })))
+  console.log(isArray1(Array.from({
+    0: 'value',
+    length: 1
+  })))
   /// es5方法
 
   // for遍历基本类型，注意for of是取数组元素，for in是取对象属性
@@ -121,28 +136,17 @@ function main () {
   // 对象作用域
   const obj = {
     value: 2,
-    testFilter () {
+    testFilter() {
       // function函数作用域，上下文随调用时的作用域决定
       return [1, 2, 3].myFilter(function (i) {
         return i >= this.value
       }, this)
     },
-    testReduce () {
+    testReduce() {
       return [1, 2, 3].myReduce((pre, cur) => pre + this.value + cur, 0)
     }
   }
   console.log(obj.testFilter())
   console.log(obj.testReduce())
 
-  // 补充
-  // 数组乱序
-  console.log([1, 2, 3, 4, 5, 6, 7, 8, 9].sort(() => Math.random() > 0.5 ? 1 : -1))
-  function shuffle (arr) {
-    for (let i = 0; i < arr.length; i++) {
-      const index = parseInt(Math.random() * (arr.length - 1));
-      [arr[i], arr[index]] = [arr[index], arr[i]]
-    }
-    return arr
-  }
-  console.log(shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9]))
 }
