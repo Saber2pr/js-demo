@@ -267,7 +267,10 @@ function main() {
       }
     })
     // 返回出现次数最多的元素和它的位置
-    return { maxStr, indexs: recode[maxStr] }
+    return {
+      maxStr,
+      indexs: recode[maxStr]
+    }
   }
 
   console.log(getMaxItem([1, 2, 3, 2, 3, 4, 5, 5, 2, 5, 6, 2, 7, 3]))
@@ -293,4 +296,60 @@ function main() {
     if (item > middle) return indexOf(arr, item, index + 1)
   }
   console.log(indexOf([0, 1, 2, 3, 4, 5, 6], 2))
+
+  // 解析 URL Params 为对象
+  /**
+   * @param {string} url
+   */
+  function parseUrlParam(url) {
+    const isNumber = /^\d+$/
+    // decodeURIComponent解码
+    return decodeURIComponent(url)
+      .split('?')[1]
+      .split('&')
+      .reduce((out, s) => {
+        const union = s.split('=')
+        const key = union[0]
+        // 监测数字字符，若key没有对应的value，则默认为true
+        const value = isNumber.test(union[1])
+          ? Number(union[1])
+          : union[1] || true
+        // 重复出现的属性转为数组
+        if (key in out) {
+          out[key] = [out[key], value]
+          return out
+        }
+        return {
+          ...out,
+          [key]: value
+        }
+      }, {})
+  }
+
+  console.log(
+    parseUrlParam(
+      'http://www.domain.com/?user=anonymous&id=123&id=456&city=%E5%8C%97%E4%BA%AC&enabled'
+    )
+  )
+
+  // 实现一个简单的模板引擎
+  /**
+   * @param {string} template
+   * @param {{}} data
+   */
+  function render(template, data) {
+    // const slot = /{{\w+}}/g
+    // const bracket = /{{|}}/g
+    // let res = slot.exec(template)
+    // while (res) {
+    //   template = template.replace(res[0], data[res[0].replace(bracket, '')])
+    //   res = slot.exec(template)
+    // }
+    // return template
+    return template.replace(
+      /{{\w+}}/g,
+      slot => data[slot.replace(/{{|}}/g, '')]
+    )
+  }
+  console.log(render(`name:{{name}}, age:{{age}}`, { name: 'saber', age: 21 }))
 }
