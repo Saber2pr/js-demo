@@ -16,7 +16,9 @@
     "url": "https://github.com/Saber2pr/js-demo/issues"
   },
   "homepage": "https://github.com/Saber2pr/js-demo#readme",
-  "devDependencies": {
-    "@saber2pr/nana": "^0.1.0"
+  "dependencies": {
+    "@saber2pr/koa": "0.0.4",
+    "@saber2pr/koa-fs": "0.0.3",
+    "@saber2pr/node": "0.0.5"
   }
 }

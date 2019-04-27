@@ -3,7 +3,7 @@ function main() {
    * @Author: saber2pr
    * @Date: 2019-04-15 18:39:21
    * @Last Modified by: saber2pr
-   * @Last Modified time: 2019-04-18 09:08:50
+   * @Last Modified time: 2019-04-27 21:23:20
    */
   const request = axios.create({
     baseURL: 'http://localhost:3005',
@@ -17,7 +17,7 @@ function main() {
     event.preventDefault()
 
     request
-      .get('/user/', {
+      .get('/form_test', {
         params: {
           username: username.value,
           password: password.value
@@ -28,7 +28,7 @@ function main() {
       })
 
     request
-      .post(`/user/`, {
+      .post(`/form_test`, {
         username: username.value,
         password: password.value
       })
