@@ -2,12 +2,18 @@
  * @Author: saber2pr
  * @Date: 2019-04-27 20:59:41
  * @Last Modified by: saber2pr
- * @Last Modified time: 2019-04-27 23:01:08
+ * @Last Modified time: 2019-04-28 19:57:43
  */
-const { Koa } = require('@saber2pr/koa')
-const { HTMLJob } = require('@saber2pr/koa-fs')
+const {
+  Koa
+} = require('@saber2pr/koa')
+const {
+  HTMLJob
+} = require('@saber2pr/koa-fs')
 const url = require('url')
-const { Http } = require('@saber2pr/node')
+const {
+  Http
+} = require('@saber2pr/node')
 
 const app = Koa({
   getParams() {
@@ -72,9 +78,9 @@ app.use(async (ctx, next) => {
   const route = '/users/register'
   if (ctx.request.url.startsWith(route)) {
     // 获取cookie userInfor
-    const requestUserInfor = ctx.request.headers.cookie
-      ? JSON.parse(decodeURI(ctx.request.headers.cookie).split('=')[1])
-      : null
+    const requestUserInfor = ctx.request.headers.cookie ?
+      JSON.parse(decodeURI(ctx.request.headers.cookie).split('=')[1]) :
+      null
     if (requestUserInfor) {
       console.log('查询用户信息')
       // 查询用户信息
