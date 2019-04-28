@@ -2,7 +2,7 @@
  * @Author: saber2pr 
  * @Date: 2019-04-13 11:47:22 
  * @Last Modified by: saber2pr
- * @Last Modified time: 2019-04-13 12:05:33
+ * @Last Modified time: 2019-04-28 22:20:57
  */
 * {
   margin: 0;
@@ -18,6 +18,8 @@ ul {
   line-height: 2rem;
   height: 2rem;
   background-color: #7fffd4;
+  position: fixed;
+  width: 100%;
 }
 
 .container {
@@ -26,7 +28,7 @@ ul {
   justify-content: center;
   background-color: #b5ffe6;
   margin: 0 auto;
-  padding-top: 30px;
+  padding-top: calc(30px + 2rem);
   padding-bottom: 30px;
   line-height: 1.5rem;
 }
